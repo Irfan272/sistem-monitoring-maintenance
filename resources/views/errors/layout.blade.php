@@ -42,12 +42,28 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+
+        <div id="main" class='layout-navbar'>
+            @include('navbar')
+              <div id="main-content">
+  
+                 @yield('message')
+{{--   
+             @include('ITSupport.layout.partials.footer') --}}
+              </div>
+          </div>
+
+
+
+
+
+   
+        {{-- <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title">
                     @yield('message')
                 </div>
             </div>
-        </div>
+        </div> --}}
     </body>
 </html>

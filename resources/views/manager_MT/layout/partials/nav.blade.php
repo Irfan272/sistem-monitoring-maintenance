@@ -51,7 +51,7 @@
                 
                 <ul class="navbar-nav ms-auto mb-lg-0">
                     <li class="nav-item dropdown me-1">
-                        <a class="nav-link active dropdown-toggle text-gray-600" href="#"
+                        {{-- <a class="nav-link active dropdown-toggle text-gray-600" href="#"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class='bi bi-envelope bi-sub fs-4'></i>
                         </a>
@@ -60,14 +60,14 @@
                                 <h6 class="dropdown-header">Mail</h6>
                             </li>
                             <li><a class="dropdown-item" href="#">No new mail</a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
                     <li class="nav-item dropdown me-3">
-                        <a class="nav-link active dropdown-toggle text-gray-600" href="#"
+                        {{-- <a class="nav-link active dropdown-toggle text-gray-600" href="#"
                             data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                             <i class='bi bi-bell bi-sub fs-4'></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end notification-dropdown"
+                        </a> --}}
+                        {{-- <ul class="dropdown-menu dropdown-menu-end notification-dropdown"
                             aria-labelledby="dropdownMenuButton">
                             <li class="dropdown-header">
                                 <h6>Notifications</h6>
@@ -98,15 +98,15 @@
                             <li>
                                 <p class="text-center py-2 mb-0"><a href="#">See all notification</a></p>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </li>
                 </ul>
                 <div class="dropdown">
                     <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="user-menu d-flex">
                             <div class="user-name text-end me-3">
-                                <h6 class="mb-0 text-gray-600">John Ducky</h6>
-                                <p class="mb-0 text-sm text-gray-600">Administrator</p>
+                                <h6 class="mb-0 text-gray-600">Welcome, {{auth()->user()->username}}</h6>
+                                <p class="mb-0 text-sm text-gray-600">{{auth()->user()->jabatan}}</p>
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">

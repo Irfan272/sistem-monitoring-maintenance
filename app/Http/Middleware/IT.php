@@ -17,9 +17,11 @@ class IT
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::User()->role == "ITSupport"){
-            return redirect('/IT/dashboard');
-        }
+        // if(Auth::User()->role == "ITSupport"){
+        //     return redirect('/IT/dashboard');
+        // }
+
+    
        
         // return $next($request);
 
@@ -27,6 +29,12 @@ class IT
         //     return $next($request);
         // }
 
-        
+        // return redirect('/');
+
+        if (Auth::user() && Auth::user()->role != "ITSupport"){
+            abort(403, 'gak ada akses.');
+        }
+
+        return $next($request);
     }
 }

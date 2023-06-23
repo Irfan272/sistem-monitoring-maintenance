@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
@@ -15,13 +16,11 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $role)
     {
-        $user = User::where('role', $request->role)->first();
-        if($user->role == 'ITSupport'){
-            return redirect('/IT/dashboard');
-        }elseif($user->role == 'User'){
-            return redirect('/user/dashboard');
+        
+        if (Auth::user() && Auth::user()->role != $role){
+            abort(403, 'gak ada akses.');
         }
 
         return $next($request);

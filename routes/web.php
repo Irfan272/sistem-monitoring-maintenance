@@ -63,38 +63,41 @@ Route::get('/', [LoginController::class, 'showLoginForm']);
 
 // Route::get('/', [LoginController::class, 'login'])->name('login');
 
+Route::middleware(['auth','CheckRole:ITSupport'])->group(function (){
+    Route::get('/IT/dashboard', [App\Http\Controllers\ITController::class, 'dashboard'])->middleware('IT');
 
-    Route::get('/IT/dashboard', [App\Http\Controllers\ITController::class, 'dashboard']);
+    // Start IT Support
+    
+    Route::get('/IT/peralatan', [App\Http\Controllers\ITController::class, 'indexPeralatan']);
+    Route::get('/IT/peralatan/create', [App\Http\Controllers\ITController::class, 'createPeralatan']);
+    Route::post('/IT/peralatan/store', [App\Http\Controllers\ITController::class, 'storePeralatan']);
+    Route::get('/IT/peralatan/edit/{id}', [App\Http\Controllers\ITController::class, 'editPeralatan']);
+    Route::patch('/IT/peralatan/update/{id}', [App\Http\Controllers\ITController::class, 'updatePeralatan']);
+    Route::delete('/IT/peralatan/delete/{id}', [App\Http\Controllers\ITController::class, 'deletePeralatan']);
+    // Route::get('/IT/peralatan/show/{id}', [App\Http\Controllers\ITController::class, 'showPeralatan']);
+    // Route::get('/peralatan.pdf', [App\Http\Controllers\ITController::class, 'generatepdf'])->name('peralatan.pdf');
+    
+    Route::get('/IT/peralatan/cetak_pdf', [App\Http\Controllers\ITController::class, 'cetak_pdf']);
+    
+    
+    Route::get('/IT/divisi', [App\Http\Controllers\ITController::class, 'indexDivisi']);
+    Route::get('/IT/divisi/create', [App\Http\Controllers\ITController::class, 'createDivisi']);
+    Route::post('/IT/divisi/store', [App\Http\Controllers\ITController::class, 'storeDivisi']);
+    Route::get('/IT/divisi/edit/{id}', [App\Http\Controllers\ITController::class, 'editDivisi']);
+    Route::patch('/IT/divisi/update/{id}', [App\Http\Controllers\ITController::class, 'updateDivisi']);
+    Route::delete('/IT/divisi/delete/{id}', [App\Http\Controllers\ITController::class, 'deleteDivisi']);
+    Route::get('/IT/divisi/show/{id}', [App\Http\Controllers\ITController::class, 'showDivisi']);
+    
+    Route::get('/IT/akun', [App\Http\Controllers\ITController::class, 'indexAkun']);
+    Route::get('/IT/akun/create', [App\Http\Controllers\ITController::class, 'createAkun']);
+    Route::post('/IT/akun/store', [App\Http\Controllers\ITController::class, 'storeAkun']);
+    Route::get('/IT/akun/edit/{id}', [App\Http\Controllers\ITController::class, 'editAkun']);
+    Route::patch('/IT/akun/update/{id}', [App\Http\Controllers\ITController::class, 'updateAkun']);
+    Route::delete('/IT/akun/delete/{id}', [App\Http\Controllers\ITController::class, 'deleteAkun']);
+    Route::get('/IT/akun/show/{id}', [App\Http\Controllers\ITController::class, 'showAkun']);
+});
 
-// Start IT Support
 
-Route::get('/IT/peralatan', [App\Http\Controllers\ITController::class, 'indexPeralatan']);
-Route::get('/IT/peralatan/create', [App\Http\Controllers\ITController::class, 'createPeralatan']);
-Route::post('/IT/peralatan/store', [App\Http\Controllers\ITController::class, 'storePeralatan']);
-Route::get('/IT/peralatan/edit/{id}', [App\Http\Controllers\ITController::class, 'editPeralatan']);
-Route::patch('/IT/peralatan/update/{id}', [App\Http\Controllers\ITController::class, 'updatePeralatan']);
-Route::delete('/IT/peralatan/delete/{id}', [App\Http\Controllers\ITController::class, 'deletePeralatan']);
-// Route::get('/IT/peralatan/show/{id}', [App\Http\Controllers\ITController::class, 'showPeralatan']);
-// Route::get('/peralatan.pdf', [App\Http\Controllers\ITController::class, 'generatepdf'])->name('peralatan.pdf');
-
-Route::get('/IT/peralatan/cetak_pdf', [App\Http\Controllers\ITController::class, 'cetak_pdf']);
-
-
-Route::get('/IT/divisi', [App\Http\Controllers\ITController::class, 'indexDivisi']);
-Route::get('/IT/divisi/create', [App\Http\Controllers\ITController::class, 'createDivisi']);
-Route::post('/IT/divisi/store', [App\Http\Controllers\ITController::class, 'storeDivisi']);
-Route::get('/IT/divisi/edit/{id}', [App\Http\Controllers\ITController::class, 'editDivisi']);
-Route::patch('/IT/divisi/update/{id}', [App\Http\Controllers\ITController::class, 'updateDivisi']);
-Route::delete('/IT/divisi/delete/{id}', [App\Http\Controllers\ITController::class, 'deleteDivisi']);
-Route::get('/IT/divisi/show/{id}', [App\Http\Controllers\ITController::class, 'showDivisi']);
-
-Route::get('/IT/akun', [App\Http\Controllers\ITController::class, 'indexAkun']);
-Route::get('/IT/akun/create', [App\Http\Controllers\ITController::class, 'createAkun']);
-Route::post('/IT/akun/store', [App\Http\Controllers\ITController::class, 'storeAkun']);
-Route::get('/IT/akun/edit/{id}', [App\Http\Controllers\ITController::class, 'editAkun']);
-Route::patch('/IT/akun/update/{id}', [App\Http\Controllers\ITController::class, 'updateAkun']);
-Route::delete('/IT/akun/delete/{id}', [App\Http\Controllers\ITController::class, 'deleteAkun']);
-Route::get('/IT/akun/show/{id}', [App\Http\Controllers\ITController::class, 'showAkun']);
 
 
 
